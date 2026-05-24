@@ -1,0 +1,143 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="hero-eyebrow">Dr. Pestana · Dental Office</p>
+    <h1 class="hero-title">
+      Calm, careful dentistry<br />
+      in American Canyon.
+    </h1>
+    <p class="hero-spanish">
+      <span class="flag" aria-hidden="true">🗣</span>
+      <span><strong>Hablamos español.</strong> Atendido por nuestro equipo bilingüe.</span>
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#inquiry">Request appointment</a>
+      <a class="btn btn-ghost" href="{{ site.Params.phoneHref }}">Call {{ site.Params.phone }}</a>
+    </div>
+    <dl class="hero-facts">
+      <div>
+        <dt>Hours</dt>
+        <dd>{{ site.Params.hoursSummary }}<br /><span class="muted small">{{ site.Params.lunchNote }}</span></dd>
+      </div>
+      <div>
+        <dt>Address</dt>
+        <dd>
+          <a href="{{ site.Params.mapsLink }}" target="_blank" rel="noopener">
+            {{ site.Params.addressLine1 }}<br />
+            {{ site.Params.addressLine2 }}
+          </a>
+        </dd>
+      </div>
+      <div>
+        <dt>Phone</dt>
+        <dd><a href="{{ site.Params.phoneHref }}">{{ site.Params.phone }}</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+{{ partial "announcements.html" . }}
+
+<section id="hours" class="section hours-location">
+  <div class="wrap two-col">
+    <div>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <p class="lead">We're tucked into the Broadway shopping plaza, in the corner suite. Look for suite C1–C2.</p>
+      <table class="hours-table" aria-label="Office hours">
+        <tbody>
+          <tr><th>Monday</th><td>{{ site.Params.hours.monday }}</td></tr>
+          <tr><th>Tuesday</th><td>{{ site.Params.hours.tuesday }}</td></tr>
+          <tr><th>Wednesday</th><td>{{ site.Params.hours.wednesday }}</td></tr>
+          <tr><th>Thursday</th><td>{{ site.Params.hours.thursday }}</td></tr>
+          <tr><th>Friday</th><td>{{ site.Params.hours.friday }}</td></tr>
+          <tr class="closed"><th>Saturday</th><td>{{ site.Params.hours.saturday }}</td></tr>
+          <tr class="closed"><th>Sunday</th><td>{{ site.Params.hours.sunday }}</td></tr>
+        </tbody>
+      </table>
+      <p class="muted"><strong>{{ site.Params.lunchNote }}</strong> — calls go to voicemail during the lunch hour. We'll return them in the afternoon.</p>
+    </div>
+    <div class="location-card">
+      <address>
+        <strong>{{ site.Params.addressLine1 }}</strong><br />
+        {{ site.Params.addressLine2 }}<br />
+        <a href="{{ site.Params.phoneHref }}">{{ site.Params.phone }}</a>
+      </address>
+      <a class="btn btn-secondary" href="{{ site.Params.mapsLink }}" target="_blank" rel="noopener">Open in Google Maps</a>
+      <p class="muted small">Hard to find? The suite is in the back corner of the plaza, behind the main parking lot. If you're lost, call us — we'll walk you in.</p>
+    </div>
+  </div>
+</section>
+
+<section id="bring" class="section bring">
+  <div class="wrap">
+    <h2 class="section-title">What to bring to your appointment</h2>
+    <p class="lead">Bringing all four lets us check you in fast and start on time.</p>
+    <ul class="bring-grid">
+      <li>
+        <div class="bring-icon" aria-hidden="true">😷</div>
+        <h3>Face mask</h3>
+        <p>Required in the office for all patients and visitors.</p>
+      </li>
+      <li>
+        <div class="bring-icon" aria-hidden="true">💳</div>
+        <h3>Insurance card</h3>
+        <p>Or a photo of the front and back. We'll verify benefits before treatment.</p>
+      </li>
+      <li>
+        <div class="bring-icon" aria-hidden="true">🪪</div>
+        <h3>Photo ID</h3>
+        <p>Driver's license, state ID, or passport.</p>
+      </li>
+      <li>
+        <div class="bring-icon" aria-hidden="true">📄</div>
+        <h3>Referral</h3>
+        <p>If you were referred by another dentist or physician, bring it along.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="payment" class="section payment">
+  <div class="wrap">
+    <h2 class="section-title">Payment &amp; financing</h2>
+    <p class="lead">We accept most dental insurance plans. If you don't have insurance — or your plan won't cover everything — we partner with three financing options so you can spread payments out.</p>
+    <ul class="payment-grid">
+      <li>
+        <h3>Cherry</h3>
+        <p class="muted">Pay over time with no hard credit check to apply.</p>
+        <a class="link-arrow" href="https://withcherry.com" target="_blank" rel="noopener">Learn about Cherry &rarr;</a>
+      </li>
+      <li>
+        <h3>Sunbit</h3>
+        <p class="muted">Quick approval at the front desk; pay in monthly installments.</p>
+        <a class="link-arrow" href="https://sunbit.com" target="_blank" rel="noopener">Learn about Sunbit &rarr;</a>
+      </li>
+      <li>
+        <h3>CareCredit</h3>
+        <p class="muted">Healthcare credit card with promotional financing options.</p>
+        <a class="link-arrow" href="https://www.carecredit.com" target="_blank" rel="noopener">Learn about CareCredit &rarr;</a>
+      </li>
+    </ul>
+    <p class="muted small">Have a question about coverage or estimates? Mention it in your appointment request and we'll prepare preliminary numbers before your visit.</p>
+  </div>
+</section>
+
+{{ partial "inquiry-form.html" . }}
+
+<section id="doctors" class="section doctors">
+  <div class="wrap doctors-card">
+    <div>
+      <p class="section-eyebrow"><span class="dot" aria-hidden="true"></span> For referring providers</p>
+      <h2 class="section-title">Refer a patient</h2>
+      <p class="lead">Use our online referral form to send patient information directly to our office. Please include the reason for referral and any relevant clinical notes.</p>
+      <p class="muted small">Note: Dr. Pestana does not treat patients under age 12, nor cases requiring periodontal surgery, orthodontics, or hospital-based oral surgery. Please refer those patients to the appropriate specialist.</p>
+    </div>
+    <div class="doctors-cta">
+      <a class="btn btn-primary btn-lg" href="{{ site.Params.referralLink }}" target="_blank" rel="noopener">Open referral form</a>
+      <p class="muted small">Opens in a new tab · hosted on dsnforms.com</p>
+    </div>
+  </div>
+</section>
+
+{{ end }}

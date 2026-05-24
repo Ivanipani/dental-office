@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-block">
+      <h3>Dr. Pestana's Dental Office</h3>
+      <p class="muted">Hablamos español. We're a small office — please be patient if phones are busy, and feel free to use the appointment request form instead.</p>
+    </div>
+    <div class="footer-block">
+      <h3>Contact</h3>
+      <p>
+        <a href="{{ site.Params.phoneHref }}">{{ site.Params.phone }}</a><br />
+        <a href="{{ site.Params.mapsLink }}" target="_blank" rel="noopener">
+          {{ site.Params.addressLine1 }}<br />
+          {{ site.Params.addressLine2 }}
+        </a>
+      </p>
+    </div>
+    <div class="footer-block">
+      <h3>Hours</h3>
+      <p>
+        Monday – Friday<br />
+        9:00 AM – 5:00 PM<br />
+        <span class="muted">{{ site.Params.lunchNote }}</span>
+      </p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p class="muted small">&copy; {{ now.Format "2006" }} {{ site.Title }}. All rights reserved.</p>
+  </div>
+</footer>

@@ -1,0 +1,24 @@
+{{ $section := site.GetPage "/announcements" }}
+{{ $items := where $section.Pages "Params.expired" "!=" true }}
+{{ $items = first 3 $items }}
+{{ with $items }}
+<section class="announcements" aria-label="Announcements">
+  <div class="wrap">
+    <h2 class="section-eyebrow">
+      <span class="dot" aria-hidden="true"></span>
+      Announcements
+    </h2>
+    <ul class="announcement-list">
+      {{ range . }}
+        <li class="announcement-item">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <div class="announcement-body">
+            <h3>{{ .Title }}</h3>
+            {{ .Content }}
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}

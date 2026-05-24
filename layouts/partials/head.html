@@ -1,0 +1,37 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}" />
+  <meta name="theme-color" content="#3f6e63" />
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <link rel="canonical" href="{{ .Permalink }}" />
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
+  {{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" />
+  {{ end -}}
+
+  {{/* JSON-LD schema for local business — improves search results */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": {{ site.Title }},
+    "telephone": "{{ site.Params.phone }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3429 Broadway Street, Suite C1-C2",
+      "addressLocality": "American Canyon",
+      "addressRegion": "CA",
+      "postalCode": "94503",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }],
+    "availableLanguage": ["English","Spanish"]
+  }
+  </script>
+</head>

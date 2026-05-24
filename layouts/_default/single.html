@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article class="wrap article">
+  <p class="article-meta">
+    {{ if eq .Section "announcements" }}
+      <a href="{{ "/announcements/" | relURL }}">&larr; All announcements</a>
+      <span class="dot-sep" aria-hidden="true">·</span>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    {{ end }}
+  </p>
+  <h1>{{ .Title }}</h1>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

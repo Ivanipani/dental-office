@@ -1,0 +1,82 @@
+<section id="inquiry" class="inquiry">
+  <div class="wrap inquiry-grid">
+    <div class="inquiry-intro">
+      <h2>Request an appointment</h2>
+      <p class="lead">Send us a request and we'll call you back to confirm a time. New patient or returning — fill out what you can.</p>
+      <p class="callout">
+        <strong>Please don't send insurance card photos or your driver's license through this form.</strong>
+        We'll collect that securely when we call you back, or you can bring it to your visit.
+      </p>
+      <p class="muted">Prefer to call? <a href="{{ site.Params.phoneHref }}">{{ site.Params.phone }}</a> · Mon–Fri 9 AM – 5 PM.</p>
+    </div>
+
+    <form class="inquiry-form" method="POST" action="{{ site.Params.inquiryFormAction }}" novalidate>
+      {{/* Honeypot — bots fill this, humans don't */}}
+      <div class="hp" aria-hidden="true">
+        <label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span>First name <em>*</em></span>
+          <input type="text" name="first_name" required autocomplete="given-name" />
+        </label>
+        <label class="field">
+          <span>Last name <em>*</em></span>
+          <input type="text" name="last_name" required autocomplete="family-name" />
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span>Date of birth <em>*</em></span>
+          <input type="date" name="dob" required />
+        </label>
+        <label class="field">
+          <span>Preferred phone <em>*</em></span>
+          <input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(707) 555-0123" />
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Email (optional)</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+
+      <fieldset class="field referral-field">
+        <legend>Do you have a referral?</legend>
+        <label class="radio">
+          <input type="radio" name="referral" value="yes" /> Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="referral" value="no" /> No
+        </label>
+        <label class="radio">
+          <input type="radio" name="referral" value="unsure" /> Not sure
+        </label>
+        <p class="muted small referral-note" hidden>
+          Great — bring the referral to your visit, or we'll ask for it when we call you back. <strong>Please don't upload it here.</strong>
+        </p>
+      </fieldset>
+
+      <label class="field">
+        <span>What brings you in? (optional)</span>
+        <textarea name="reason" rows="4" placeholder="Toothache, consult, follow-up, etc. Helps us schedule correctly."></textarea>
+      </label>
+
+      <label class="field">
+        <span>Insurance carrier name (optional)</span>
+        <input type="text" name="insurance_carrier" autocomplete="off" />
+        <small class="muted">Just the name (e.g., Delta Dental, MetLife). <strong>Don't include member ID or upload your card.</strong></small>
+      </label>
+
+      <p class="muted small consent">
+        By submitting, you agree we may contact you by phone or email to schedule. We won't share your information.
+      </p>
+
+      <button type="submit" class="btn btn-primary btn-lg">Send request</button>
+
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+baseURL = 'https://example.com/'
+locale = 'en-us'
+title = "Dr. Pestana's Dental Office"
+enableRobotsTXT = true
+
+[params]
+  description = "Dental office serving American Canyon, CA. Hablamos español. Call 707-980-7274 to schedule."
+  phone = "707-980-7274"
+  phoneHref = "tel:+17079807274"
+  email = ""
+  addressLine1 = "3429 Broadway Street, Suite C1-C2"
+  addressLine2 = "American Canyon, CA 94503"
+  mapsLink = "https://maps.google.com/?q=3429+Broadway+Street+Suite+C1-C2+American+Canyon+CA+94503"
+  hoursSummary = "Mon–Fri · 9 AM – 5 PM"
+  lunchNote = "Closed for lunch 1–2 PM"
+  referralLink = "https://dsnforms.com/form/clinicform/Mzc0/Mjcw"
+  # When you're ready, paste your patient intake link here and the homepage
+  # will surface it. Leave blank to hide.
+  patientIntakeLink = ""
+  # Replace with your form-handler endpoint. Free options that don't require
+  # a backend: Formspree (https://formspree.io) or Web3Forms (https://web3forms.com).
+  # If deploying to Netlify, see README for the simpler Netlify Forms setup.
+  inquiryFormAction = "https://formspree.io/f/YOUR_FORM_ID"
+
+[params.hours]
+  monday    = "9:00 AM – 5:00 PM"
+  tuesday   = "9:00 AM – 5:00 PM"
+  wednesday = "9:00 AM – 5:00 PM"
+  thursday  = "9:00 AM – 5:00 PM"
+  friday    = "9:00 AM – 5:00 PM"
+  saturday  = "Closed"
+  sunday    = "Closed"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
