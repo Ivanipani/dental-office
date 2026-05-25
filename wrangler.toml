@@ -2,7 +2,7 @@
 # Used by `wrangler deploy` (the default deploy command in Cloudflare Workers Builds).
 # See: https://developers.cloudflare.com/workers/static-assets/
 
-name = "pestana-dental"
+name = "dental-office"
 compatibility_date = "2026-05-24"
 
 [assets]
