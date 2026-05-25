@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="wrap article" style="text-align: center; padding-top: 5rem;">
+  <p class="article-meta">Error 404</p>
+  <h1>We can't find that page.</h1>
+  <p class="lead">
+    The link might be old, or we may have moved things around. Try the homepage —
+    or just call us, we're happy to help.
+  </p>
+  <p style="margin-top: 2rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+    <a class="btn btn-primary" href="{{ "/" | relURL }}">Back to homepage</a>
+    <a class="btn btn-ghost" href="{{ site.Params.phoneHref }}">Call {{ site.Params.phone }}</a>
+  </p>
+</section>
+{{ end }}

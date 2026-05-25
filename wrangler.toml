@@ -1,0 +1,15 @@
+# Cloudflare Workers config — deploys this Hugo site as a static assets-only Worker.
+# Used by `wrangler deploy` (the default deploy command in Cloudflare Workers Builds).
+# See: https://developers.cloudflare.com/workers/static-assets/
+
+name = "pestana-dental"
+compatibility_date = "2026-05-24"
+
+[assets]
+# Where the built static site lives. The CI build step (`hugo --minify --gc`)
+# produces these files, then `wrangler deploy` uploads them.
+directory = "./public/"
+
+# Serve our custom 404 page (rendered by Hugo into public/404.html) when no
+# asset matches the request path.
+not_found_handling = "404-page"

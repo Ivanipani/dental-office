@@ -108,21 +108,28 @@ Use a HIPAA-compliant form provider with a signed BAA — examples: **Jotform HI
 
 The site is fully static — any host that serves files works.
 
-### Cloudflare Pages (recommended)
+### Cloudflare (Workers Builds — recommended)
 
-1. Push this repo to GitHub.
-2. In the Cloudflare dashboard: **Workers & Pages → Create application → Pages → Connect to Git**.
-3. Pick this repo. Set:
-   - Build command: `hugo --minify`
-   - Build output directory: `public`
-   - Environment variable: `HUGO_VERSION = 0.161.1` (or whatever `hugo version` reports locally)
-4. Save and deploy. Subsequent pushes auto-deploy.
+This repo includes a [`wrangler.toml`](./wrangler.toml) that tells Cloudflare to deploy the contents of `public/` as a static-assets Worker. With it in place, the only thing Cloudflare needs to know is how to *build* the site.
+
+1. Push this repo to GitHub (or GitLab/Bitbucket).
+2. In the Cloudflare dashboard: **Workers & Pages → Create → Connect to Git**.
+3. Pick this repo. In **Build settings**:
+   - **Build command**: `hugo --minify --gc`
+   - **Deploy command**: `npx wrangler deploy` *(this is the default — leave it)*
+   - **Root directory**: *(leave blank)*
+   - **Non-production branch deploy command**: `npx wrangler versions upload` *(default — leave it)*
+4. Under **Build variables and secrets**, add:
+   - `HUGO_VERSION` = whatever `just version` reports locally (currently `0.161.1`)
+5. Save. Cloudflare will run the first build immediately, then auto-build on every push to `main`. PRs and branch pushes get preview URLs.
+
+The Worker name (`pestana-dental`) and the production hostname (`pestana-dental.<account>.workers.dev`) come from the `name` field in `wrangler.toml`. Change it there if you want a different name.
 
 ### Netlify
 
 1. Push to GitHub.
 2. Netlify → **Add new site → Import from Git**.
-3. Build command: `hugo --minify`. Publish directory: `public`.
+3. Build command: `hugo --minify --gc`. Publish directory: `public`.
 4. Add environment variable `HUGO_VERSION = 0.161.1`.
 5. Deploy. (If using Netlify Forms, set that up as described above.)
 
@@ -148,6 +155,8 @@ In `layouts/partials/head.html`:
 
 ```
 hugo.toml                       # site config + editable params
+wrangler.toml                   # Cloudflare deploy config (static assets)
+justfile                        # task runner (`just` to list commands)
 archetypes/announcements.md     # template used by `hugo new content`
 content/
   announcements/
@@ -159,6 +168,7 @@ layouts/
     single.html                 # individual announcement pages
     list.html                   # announcement archive
   index.html                    # homepage (all sections)
+  404.html                      # friendly not-found page
   partials/
     head.html
     header.html
